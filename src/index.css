@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Linear Design System Tokens (HSL) */
+    /* Background: #050506 -> 240 10% 2% */
+    --background: 240 10% 2%; 
+    
+    /* Foreground: #EDEDEF -> 240 5% 93% */
+    --foreground: 240 5% 93%;
+    
+    /* Card: Slightly lighter than background, #0A0A0C -> 240 9% 4% */
+    --card: 240 9% 4%;
+    --card-foreground: 240 5% 93%;
+    
+    --popover: 240 9% 4%;
+    --popover-foreground: 240 5% 93%;
+    
+    /* Primary: #EDEDEF */
+    --primary: 240 5% 93%;
+    --primary-foreground: 240 10% 2%;
+    
+    /* Secondary: Subtle surface, #18181B -> 240 6% 10% */
+    --secondary: 240 6% 10%;
+    --secondary-foreground: 240 5% 93%;
+    
+    /* Muted: #8A8F98 -> 220 5% 57% */
+    --muted: 240 6% 10%;
+    --muted-foreground: 220 5% 57%;
+    
+    /* Accent: #5E6AD2 -> 234 56% 60% */
+    --accent: 234 56% 60%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    
+    /* Border: rgba(255,255,255,0.08) -> roughly 240 6% 12% solid equiv */
+    --border: 240 6% 12%; 
+    --input: 240 6% 12%;
+    
+    --ring: 234 56% 60%;
+    
+    --radius: 0.5rem;
+
+    /* Chart Colors (Updated for dark theme) */
+    --chart-1: 234 56% 60%; /* Accent */
+    --chart-2: 280 65% 60%; /* Purple */
+    --chart-3: 160 60% 45%; /* Green */
+    --chart-4: 340 75% 55%; /* Pink */
+    --chart-5: 30 80% 55%;  /* Orange */
+    
+    /* Sidebar (Dark) */
+    --sidebar-background: 240 10% 2%;
+    --sidebar-foreground: 240 5% 93%;
+    --sidebar-primary: 234 56% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 6% 10%;
+    --sidebar-accent-foreground: 240 5% 93%;
+    --sidebar-border: 240 6% 12%;
+    --sidebar-ring: 234 56% 60%;
+  }
+
+  /* Enforce Dark Mode Tokens Globally (even if 'dark' class isnt present, we want this look) */
+  .dark {
+    --background: 240 10% 2%; 
+    --foreground: 240 5% 93%;
+    --card: 240 9% 4%;
+    --card-foreground: 240 5% 93%;
+    --popover: 240 9% 4%;
+    --popover-foreground: 240 5% 93%;
+    --primary: 240 5% 93%;
+    --primary-foreground: 240 10% 2%;
+    --secondary: 240 6% 10%;
+    --secondary-foreground: 240 5% 93%;
+    --muted: 240 6% 10%;
+    --muted-foreground: 220 5% 57%;
+    --accent: 234 56% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 240 6% 12%;
+    --input: 240 6% 12%;
+    --ring: 234 56% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-accent/30 selection:text-white;
+  }
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent; 
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+  }
+}
+
+@layer utilities {
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  }
+  
+  .glass {
+    @apply bg-white/[0.03] border border-white/[0.06];
+  }
+  
+  .glass-card {
+    @apply bg-gradient-to-b from-white/[0.08] to-white/[0.02] border border-white/[0.06] shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_2px_20px_rgba(0,0,0,0.4)];
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+}
